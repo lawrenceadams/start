@@ -1,5 +1,3 @@
-var weatherObject;
-
 // Finds current time and date, formats it properly
 function startTime() {
 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -153,7 +151,6 @@ function getWeather(location) {
 	var API_key = 'd40dbddf287175e390554fddbbdbcbf1';
 	var exclusions = 'flags,daily,minutely,alerts';
 	var darkSkyURL = 'https://api.darksky.net/forecast/' + API_key + '/' + location + '?exclude=' + exclusions + '&units=si';
-	// var xmlhttp = new XMLHttpRequest();
 
 	function processWeather(weather) {
 		var weatherIcon = '';
@@ -191,8 +188,6 @@ function getWeather(location) {
 		url: darkSkyURL,
 		dataType: "jsonp",
 		success: function (data) {
-			console.log("DATA >>>");
-			console.log(data)
 			processWeather(data);
 		}
 	});
