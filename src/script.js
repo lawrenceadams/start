@@ -195,48 +195,7 @@ function getWeather(location) {
 			console.log(data)
 			processWeather(data);
 		}
-	})
-
-	// xmlhttp.open('GET', darkSkyURL, true);
-	// xmlhttp.onreadystatechange = function () {
-	// 	if (xmlhttp.readyState == 4) {
-	// 		if (xmlhttp.status == 200) {
-	// 			var weather = JSON.parse(xmlhttp.responseText);
-	// 			// console.log(weather);
-
-	// 			var weatherIcon = '';
-	// 			if (weather.currently.icon == 'clear-day')
-	// 				weatherIcon = 'sun';
-	// 			else if (weather.currently.icon == 'clear-night')
-	// 				weatherIcon = 'moon';
-	// 			else if (weather.currently.icon == 'rain')
-	// 				weatherIcon = 'rain';
-	// 			else if (weather.currently.icon == 'snow')
-	// 				weatherIcon = 'snow';
-	// 			else if (weather.currently.icon == 'sleet')
-	// 				weatherIcon = 'sleet';
-	// 			else if (weather.currently.icon == 'wind')
-	// 				weatherIcon = 'wind';
-	// 			else if (weather.currently.icon == 'fog')
-	// 				weatherIcon = 'fog';
-	// 			else if (weather.currently.icon == 'cloudy')
-	// 				weatherIcon = 'cloud';
-	// 			else if (weather.currently.icon == 'partly-cloudy-day')
-	// 				weatherIcon = 'cloud sun';
-	// 			else if (weather.currently.icon == 'partly-cloudy-night')
-	// 				weatherIcon = 'cloud moon';
-
-	// 			if (weather.currently.icon == 'snow' || weather.currently.icon == 'sleet')
-	// 				participate('snow');
-	// 			else if (weather.currently.icon == 'rain')
-	// 				participate('rain');
-
-	// 			document.getElementById('weather').innerHTML = '<a id="weatherlink" href="https://darksky.net/forecast/' + location + '"><span class="climacon ' + weatherIcon + '"></span> ' + weather.currently.summary + ', ' + Math.round(weather.currently.temperature) + '&deg;</a>';
-	// 			document.getElementById('details').innerHTML = weather.hourly.summary.replace(',', ',<br/>');
-	// 		}
-	// 	}
-	// };
-	// xmlhttp.send(null);
+	});
 }
 
 // Geolocates the user, otherwise defaulting to Pittsburgh
@@ -315,45 +274,6 @@ function participate(type) {
 	}, 16);
 }
 
-// Connects to Gmail and fetches unread message count
-function gmailRequest() {
-	var gmailURL = 'https://mail.google.com/mail/u/0/feed/atom'
-	element = document.getElementById('gmail'),
-		xmlhttp = new XMLHttpRequest();
-	xmlhttp.open('GET', gmailURL, true);
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState == 4) {
-			if (xmlhttp.status == 200) {
-				var parser = new DOMParser(),
-					xmlDoc = parser.parseFromString(xmlhttp.responseText, 'application/xml'),
-					email = xmlDoc.getElementsByTagName('title')[0].innerHTML.replace('Gmail - Inbox for ', ''),
-					count = xmlDoc.getElementsByTagName('fullcount')[0].innerHTML,
-					entries = xmlDoc.getElementsByTagName('entry')
-				entryList = email + ":\n",
-					plural = (count > 1) ? ('s') : ('');
-
-				// console.log(xmlDoc);
-				// console.log(entries);
-
-				if (entries.length == 0)
-					element.innerHTML = "<p><a href='" + gmailURL.replace('/feed/atom', '') + "' id='emaillink'>Inbox zero. Enjoy your day.</a></p>\n";
-				else {
-					for (var i = 0; i < entries.length; i++) {
-						var entryTitle = entries[i].getElementsByTagName('title')[0].innerHTML.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'),
-							authorName = entries[i].getElementsByTagName('author')[0].getElementsByTagName('name')[0].innerHTML.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-						// console.log(entries[i]);
-						entryList += authorName + ' &mdash; ' + entryTitle + "\n";
-					}
-					// console.log(entryList);
-
-					element.innerHTML = "<p><a href='" + gmailURL.replace('/feed/atom', '') + "' id='emaillink' title='" + entryList + "'>" + count + " unread email" + plural + "</a></p>\n";
-				}
-			}
-		}
-	};
-	xmlhttp.send(null);
-}
-
 // Initializes everything on page load
 $(function () {
 	startTime();
@@ -361,7 +281,6 @@ $(function () {
 	randomBackground();
 	bindMousetraps();
 	geolocWeather();
-	gmailRequest();
 
 	// In development
 	// fetchBookmarks();
