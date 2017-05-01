@@ -111,13 +111,13 @@ function bindMousetraps() {
 
 	// Binds secret GitHub links
 	Mousetrap.bind('g', function () {
-		window.location.href = 'https://github.com/pschfr/start';
+		window.location.href = 'https://github.com/lozinge/start';
 	});
 	Mousetrap.bind('shift+g', function () {
-		window.location.href = 'https://github.com/pschfr';
+		window.location.href = 'https://github.com/lozinge';
 	})
 	Mousetrap.bind('alt+g', function () {
-		window.location.href = 'https://github.com/pschfr/start/projects/2?fullscreen=true';
+		window.location.href = 'https://github.com/lozinge/start/projects/2?fullscreen=true';
 	});
 
 	// Binds keyboard shortcut helper modal
