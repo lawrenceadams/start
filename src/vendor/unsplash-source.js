@@ -14,7 +14,7 @@ $$ |  $$ |$$ |  $$ | \____$$\ $$ |  $$ |$$ |$$  __$$ | \____$$\ $$ |  $$ |
 */
 
 if (!Array.isArray) {
-  Array.isArray = function(arg) {
+  Array.isArray = function (arg) {
     return Object.prototype.toString.call(arg) === '[object Array]';
   };
 }
@@ -27,7 +27,7 @@ if (!String.prototype.trim) {
 
 if (!Array.prototype.forEach) {
 
-  Array.prototype.forEach = function(callback, thisArg) {
+  Array.prototype.forEach = function (callback, thisArg) {
 
     var T, k;
 

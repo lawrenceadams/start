@@ -111,13 +111,13 @@ function bindMousetraps() {
 
 	// Binds secret GitHub links
 	Mousetrap.bind('g', function () {
-		window.location.href = 'https://github.com/lozinge/start';
+		window.location.href = 'https://github.com/lawrenceadams/start';
 	});
 	Mousetrap.bind('shift+g', function () {
-		window.location.href = 'https://github.com/lozinge';
-	})
+		window.location.href = 'https://github.com/lawrenceadams';
+	});
 	Mousetrap.bind('alt+g', function () {
-		window.location.href = 'https://github.com/lozinge/start/projects/2?fullscreen=true';
+		window.location.href = 'https://github.com/lawrenceadams/EVSProject/projects/1?fullscreen=true';
 	});
 
 	// Binds keyboard shortcut helper modal
@@ -243,11 +243,11 @@ function participate(type) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.beginPath();
 		var random = MyMath.random();
-		var distance = .05 + .95 * random;
+		var distance = 0.05 + 0.95 * random;
 		flake = {};
-		flake.x = 1.5 * canvas.width * MyMath.random() - .5 * canvas.width;
+		flake.x = 1.5 * canvas.width * MyMath.random() - 0.5 * canvas.width;
 		flake.y = -9;
-		flake.velX = 2 * distance * (MyMath.random() / 2 + .5);
+		flake.velX = 2 * distance * (MyMath.random() / 2 + 0.5);
 		flake.velY = (4 + 2 * MyMath.random()) * distance;
 		flake.radius = MyMath.pow(5 * random, 2) / 5;
 		flake.update = function () {
@@ -260,11 +260,11 @@ function participate(type) {
 				ctx.fillStyle = "#FFF";
 			else if (type == 'rain')
 				ctx.fillStyle = "#00F";
-			ctx.fill()
+			ctx.fill();
 		};
 		flakeArray.push(flake);
 		for (b = 0; b < flakeArray.length; b++) {
-			flakeArray[b].y > canvas.height ? flakeArray.splice(b, 1) : flakeArray[b].update()
+			flakeArray[b].y > canvas.height ? flakeArray.splice(b, 1) : flakeArray[b].update();
 		}
 	}, 16);
 }
