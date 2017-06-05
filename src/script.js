@@ -111,12 +111,9 @@ function bindMousetraps() {
 
 	// Binds secret GitHub links
 	Mousetrap.bind('g', function () {
-		window.location.href = 'https://github.com/lawrenceadams/start';
-	});
-	Mousetrap.bind('shift+g', function () {
 		window.location.href = 'https://github.com/lawrenceadams';
 	});
-	Mousetrap.bind('alt+g', function () {
+	Mousetrap.bind('shift+g', function () {
 		window.location.href = 'https://github.com/lawrenceadams/EVSProject/projects/1?fullscreen=true';
 	});
 
